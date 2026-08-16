@@ -171,8 +171,12 @@ export type HomeContent = {
 export type NavContent = {
   links: { label: string; href: string }[];
   cta: string;
-  /** Language switcher label of the OTHER locale + its home href. */
-  switcher: { label: string; href: string };
+  /**
+   * Language switcher: the OTHER locales, in display order. The href is
+   * computed at render time via alternatePath() so the visitor stays on
+   * the equivalent page.
+   */
+  switchers: { target: "pl" | "en" | "nl"; label: string }[];
   menuOpen: string;
   menuClose: string;
 };

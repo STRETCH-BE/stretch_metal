@@ -21,11 +21,17 @@ export const siteConfig = {
     "StretchMetal — usługi obróbki metali z Częstochowy: spawanie MIG/MAG i TIG, cięcie laserowe blach, obróbka CNC, malowanie proszkowe, projektowanie i kompletne konstrukcje stalowe. Część belgijskiej Stretchgroup. Dostawy w całej UE.",
   descriptionEn:
     "StretchMetal — metal fabrication services from Częstochowa, Poland: MIG/MAG and TIG welding, sheet-metal laser cutting, CNC machining, powder coating, technical design and complete custom steel structures. Part of the Belgian Stretchgroup. EU-wide delivery.",
+  taglineNl: "Staal. Gesneden. Gelast. Gecoat.",
+  descriptionNl:
+    "StretchMetal — metaalbewerking vanuit Częstochowa, Polen: MIG/MAG- en TIG-lassen, lasersnijden van plaatwerk, CNC-bewerking, poedercoaten, engineering en complete staalconstructies op maat. Onderdeel van de Belgische Stretchgroup. Levering in heel de EU.",
 
   // [CONFIRM] domain — read from env, this fallback assumed
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://stretchmetal.pl",
 
-  locales: ["pl", "en"] as const,
+  /** Belgian domain — canonical host for the Dutch (/nl) tree. */
+  urlBe: process.env.NEXT_PUBLIC_SITE_URL_BE || "https://stretchmetal.be",
+
+  locales: ["pl", "en", "nl"] as const,
   defaultLocale: "pl" as const,
 
   contact: {

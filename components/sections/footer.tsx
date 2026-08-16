@@ -10,11 +10,13 @@
  * TrackedCTA `cta_click`, hours).
  *
  * Legal bar below the grid: legalLine, legal links, and the language
- * switcher — FooterContent carries no switcher field, so the PL/EN label
- * is derived from `locale` (locale codes, not copy). The switcher href is
- * computed from the current pathname in LanguageSwitcherLink — a tiny
- * client island (usePathname + alternatePath) that links to the
- * EQUIVALENT page in the other locale, keeping the footer itself server.
+ * switchers — one chip per OTHER locale. FooterContent carries no
+ * switcher field, so the list is derived from `locale` against
+ * siteConfig.locales (labels are locale codes, not copy; aria-labels the
+ * language's own name). Each href is computed from the current pathname
+ * in LanguageSwitcherLink — a tiny client island (usePathname +
+ * alternatePath) that links to the EQUIVALENT page in the target locale,
+ * keeping the footer itself server.
  */
 
 import Link from "next/link";
@@ -50,11 +52,18 @@ function ColumnTitle({
 const footerLink =
   "block py-1.5 text-sm text-on-dark-soft transition-colors hover:text-white";
 
+/** Switcher aria-labels — the target language's own name. */
+const LANGUAGE_NAMES: Record<Locale, string> = {
+  pl: "Polski",
+  en: "English",
+  nl: "Nederlands",
+};
+
 export function Footer({ content, locale }: Props) {
-  const switcher =
-    locale === "pl"
-      ? { label: "EN", target: "en" as const }
-      : { label: "PL", target: "pl" as const };
+  /* One switcher per OTHER locale, in siteConfig.locales order. */
+  const switchers = siteConfig.locales
+    .filter((l) => l !== locale)
+    .map((target) => ({ target, label: target.toUpperCase() }));
 
   return (
     <footer className="bg-black py-14 text-white md:py-20">
@@ -184,13 +193,16 @@ export function Footer({ content, locale }: Props) {
                 </Link>
               </li>
             ))}
-            <li>
-              <LanguageSwitcherLink
-                target={switcher.target}
-                label={switcher.label}
-                className="inline-block border border-line-dark px-2.5 py-1 font-bold uppercase tracking-[0.14em] text-on-dark-soft transition-colors hover:border-white hover:text-white"
-              />
-            </li>
+            {switchers.map((s) => (
+              <li key={s.target}>
+                <LanguageSwitcherLink
+                  target={s.target}
+                  label={s.label}
+                  ariaLabel={LANGUAGE_NAMES[s.target]}
+                  className="inline-block border border-line-dark px-2.5 py-1 font-bold uppercase tracking-[0.14em] text-on-dark-soft transition-colors hover:border-white hover:text-white"
+                />
+              </li>
+            ))}
           </ul>
         </div>
       </Container>

@@ -1,13 +1,14 @@
 "use client";
 
 /**
- * Cookie consent banner — RODO/GDPR-compliant, bilingual.
+ * Cookie consent banner — RODO/GDPR-compliant, trilingual.
  * File path: /components/analytics/cookie-banner.tsx
  *
  * Fixed-bottom bar asking for consent; hidden once the visitor decides.
- * Mounted once in the root layout (which wraps both locale trees), so it
- * localizes itself from the pathname: /en… → English, anything else →
- * Polish. Links go to the locale-correct privacy + cookie policy routes.
+ * Mounted once in the root layout (which wraps all locale trees), so it
+ * localizes itself from the pathname: /en… → English, /nl… → Dutch
+ * (formal "u" — Flemish B2B register), anything else → Polish. Links go
+ * to the locale-correct privacy + cookie policy routes.
  *
  * RODO constraints baked in:
  *   - accept and reject carry EQUAL visual weight (same .btn class) —
@@ -23,7 +24,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { routes } from "@/lib/i18n-routes";
+import { routes, type SiteLocale } from "@/lib/i18n-routes";
 import { useConsent } from "./consent-provider";
 
 type BannerCopy = {
@@ -36,7 +37,7 @@ type BannerCopy = {
   reject: string;
 };
 
-const COPY: Record<"pl" | "en", BannerCopy> = {
+const COPY: Record<SiteLocale, BannerCopy> = {
   pl: {
     ariaLabel: "Zgoda na pliki cookie",
     heading: "Ta strona używa plików cookie",
@@ -55,10 +56,20 @@ const COPY: Record<"pl" | "en", BannerCopy> = {
     accept: "Accept all",
     reject: "Essential only",
   },
+  nl: {
+    ariaLabel: "Toestemming voor cookies",
+    heading: "Deze site gebruikt cookies",
+    body: "Noodzakelijke cookies staan altijd aan. Statistiek en marketing — enkel met uw toestemming. U kunt uw toestemming op elk moment intrekken.",
+    privacyLabel: "Privacybeleid",
+    cookiesLabel: "Cookiebeleid",
+    accept: "Alles aanvaarden",
+    reject: "Enkel noodzakelijke",
+  },
 };
 
-function localeFromPath(pathname: string | null): "pl" | "en" {
+function localeFromPath(pathname: string | null): SiteLocale {
   if (pathname === "/en" || pathname?.startsWith("/en/")) return "en";
+  if (pathname === "/nl" || pathname?.startsWith("/nl/")) return "nl";
   return "pl";
 }
 

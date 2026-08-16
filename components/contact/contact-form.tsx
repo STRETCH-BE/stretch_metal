@@ -84,6 +84,26 @@ const COPY: Record<Locale, Copy> = {
     successBody:
       "Thank you. We'll reply within 48 hours — from the same hall your parts would ship from.", // [CONFIRM] 48 h — site-wide SLA
   },
+  // Formal u-vorm, Flemish register — matches /content/nl/rfq.ts
+  nl: {
+    name: "Naam *",
+    email: "E-mail *",
+    message: "Bericht *",
+    messagePlaceholder:
+      "Waarmee kunnen wij u helpen? Hebt u een technische tekening, gebruik dan het offerteformulier — die komt rechtstreeks bij een ingenieur terecht.",
+    consent:
+      "Ik ga akkoord met de verwerking van mijn gegevens om dit bericht te beantwoorden. Meer details in het",
+    consentLinkLabel: "privacybeleid",
+    submit: "Verstuur bericht",
+    submitting: "Versturen…",
+    errorRequired: "Dit veld is verplicht.",
+    errorEmail: "Geef een geldig e-mailadres op.",
+    errorGeneric:
+      "Versturen mislukt. Probeer het opnieuw of mail ons rechtstreeks.",
+    successTitle: "Bericht verzonden.",
+    successBody:
+      "Bedankt. We antwoorden binnen 48 uur — gewoon in het Nederlands.", // [CONFIRM] 48 h — site-wide SLA
+  },
 };
 
 type Status = "idle" | "submitting" | "success" | "error";

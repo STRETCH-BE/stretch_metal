@@ -5,8 +5,9 @@
  * File path: /components/sections/mobile-sticky-cta.tsx
  *
  * Client component: usePathname decides visibility — the bar returns null
- * on the RFQ routes (both locales, thank-you subpaths included), where the
- * form itself is the CTA and a competing bar would cover its submit.
+ * on the RFQ routes (all three locales, thank-you subpaths included),
+ * where the form itself is the CTA and a competing bar would cover its
+ * submit.
  *
  * Two equal hard-edged halves, h-14 (56px targets): black tel: button
  * (`phone_click` {location:"sticky"}) and red RFQ button (`cta_click`
@@ -31,11 +32,13 @@ type Props = {
 export function MobileStickyCta({ content, locale }: Props) {
   const pathname = usePathname();
 
-  /* Hidden on RFQ routes in either locale — prefix match also covers the
-     thank-you subpaths (/wycena/dziekujemy, /en/quote/thank-you). */
+  /* Hidden on RFQ routes in any locale — prefix match also covers the
+     thank-you subpaths (/wycena/dziekujemy, /en/quote/thank-you,
+     /nl/offerte/bedankt). */
   if (
     pathname.startsWith(routes.rfq.pl) ||
-    pathname.startsWith(routes.rfq.en)
+    pathname.startsWith(routes.rfq.en) ||
+    pathname.startsWith(routes.rfq.nl)
   ) {
     return null;
   }

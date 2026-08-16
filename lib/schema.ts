@@ -56,7 +56,7 @@ export function buildOrganization() {
         email: siteConfig.contact.email,
         contactType: "sales",
         areaServed: ["PL", "EU"],
-        availableLanguage: ["Polish", "English"],
+        availableLanguage: ["Polish", "English", "Dutch"],
       },
     ],
   };
@@ -69,7 +69,7 @@ export function buildWebsite() {
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
-    inLanguage: ["pl-PL", "en"],
+    inLanguage: ["pl-PL", "en", "nl-BE"],
   };
 }
 
@@ -132,7 +132,8 @@ export function buildService(opts: {
       url: siteConfig.url,
     },
     url: `${siteConfig.url}${opts.path}`,
-    areaServed: ["PL", "EU"],
+    // BE listed explicitly alongside EU — Belgium is the group's home market
+    areaServed: ["PL", "BE", "EU"],
   };
 }
 

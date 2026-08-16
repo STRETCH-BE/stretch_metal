@@ -11,9 +11,10 @@
 import Link from "next/link";
 import { routes } from "@/lib/i18n-routes";
 
-const ARIA_LABELS: Record<"pl" | "en", string> = {
+const ARIA_LABELS: Record<"pl" | "en" | "nl", string> = {
   pl: "StretchMetal — strona główna",
   en: "StretchMetal — home",
+  nl: "StretchMetal — startpagina",
 };
 
 type Props = {
@@ -21,7 +22,7 @@ type Props = {
   /** Pixel font size for the wordmark — default 20 (nav), pass 24 in footer. */
   size?: number;
   /** Locale of the surrounding page — points the link at that locale's home. */
-  locale?: "pl" | "en";
+  locale?: "pl" | "en" | "nl";
   className?: string;
 };
 

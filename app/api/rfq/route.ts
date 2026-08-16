@@ -3,9 +3,14 @@
  * File path: /app/api/rfq/route.ts
  *
  * Receives multipart/form-data POSTs from the RFQ form (/wycena,
- * /en/quote) and the contact form (formType distinguishes them), then
- * emails the lead via Microsoft Graph (lib/email.ts) with the customer's
- * CAD files attached.
+ * /en/quote, /nl/offerte) and the contact form (formType distinguishes
+ * them), then emails the lead via Microsoft Graph (lib/email.ts) with the
+ * customer's CAD files attached.
+ *
+ * Locale contract: `locale` is "pl" | "en" | "nl" (anything else falls
+ * back to "pl"). It selects the ERROR strings and the auto-reply language
+ * only — the lead email to the workshop stays Polish (internal audience),
+ * with the customer's language flagged in a detail row.
  *
  * Anti-spam (no captcha — friction kills B2B leads):
  *   - honeypot field `website`: filled → fake success, silent drop
@@ -44,7 +49,7 @@ import type { ServiceKey } from "@/lib/i18n-routes";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-type FormLocale = "pl" | "en";
+type FormLocale = "pl" | "en" | "nl";
 
 /* ─── Anti-spam thresholds ────────────────────────────────── */
 
@@ -118,22 +123,33 @@ function sanitizeFilename(name: string): string {
 
 /* ─── Whitelists (server must not trust client values) ────── */
 
-const SERVICE_LABELS: Record<ServiceKey, { pl: string; en: string }> = {
-  welding: { pl: "Spawanie", en: "Welding" },
-  laser: { pl: "Cięcie laserowe", en: "Laser cutting" },
-  cnc: { pl: "Obróbka CNC", en: "CNC machining" },
-  coating: { pl: "Malowanie proszkowe", en: "Powder coating" },
-  design: { pl: "Projektowanie", en: "Design & engineering" },
-  structures: { pl: "Konstrukcje stalowe", en: "Steel structures" },
+const SERVICE_LABELS: Record<
+  ServiceKey,
+  { pl: string; en: string; nl: string }
+> = {
+  welding: { pl: "Spawanie", en: "Welding", nl: "Lassen" },
+  laser: { pl: "Cięcie laserowe", en: "Laser cutting", nl: "Lasersnijden" },
+  cnc: { pl: "Obróbka CNC", en: "CNC machining", nl: "CNC-bewerking" },
+  coating: { pl: "Malowanie proszkowe", en: "Powder coating", nl: "Poedercoaten" },
+  design: { pl: "Projektowanie", en: "Design & engineering", nl: "Engineering" },
+  structures: {
+    pl: "Konstrukcje stalowe",
+    en: "Steel structures",
+    nl: "Staalconstructies",
+  },
 };
 
 const SERVICE_KEYS = Object.keys(SERVICE_LABELS) as ServiceKey[];
 
-const MATERIAL_LABELS: Record<string, { pl: string; en: string }> = {
-  steel: { pl: "Stal czarna", en: "Mild steel" },
-  stainless: { pl: "Stal nierdzewna", en: "Stainless steel" },
-  aluminium: { pl: "Aluminium", en: "Aluminium" },
-  other: { pl: "Inny / mieszany", en: "Other / mixed" },
+const MATERIAL_LABELS: Record<string, { pl: string; en: string; nl: string }> = {
+  steel: { pl: "Stal czarna", en: "Mild steel", nl: "Constructiestaal" },
+  stainless: {
+    pl: "Stal nierdzewna",
+    en: "Stainless steel",
+    nl: "Inox (roestvast staal)",
+  },
+  aluminium: { pl: "Aluminium", en: "Aluminium", nl: "Aluminium" },
+  other: { pl: "Inny / mieszany", en: "Other / mixed", nl: "Ander / gemengd" },
 };
 
 const COUNTRY_LABELS: Record<string, string> = {
@@ -196,6 +212,21 @@ const ERRORS: Record<
     tooManyFiles: "Maximum 10 files per submission.",
     sendFailed: `Sending failed. Email us: ${siteConfig.contact.email} or call: ${siteConfig.contact.phoneDisplay}.`,
   },
+  // Formal u-vorm — matches the register of /content/nl/rfq.ts
+  nl: {
+    rateLimited: `Te veel aanvragen na elkaar. Bel ons: ${siteConfig.contact.phoneDisplay}.`,
+    badRequest: "Ongeldige aanvraag. Vernieuw de pagina en probeer het opnieuw.",
+    required: "Naam, e-mail en bericht zijn verplicht.",
+    email: "Geef een geldig e-mailadres op.",
+    consent: "Toestemming voor gegevensverwerking is verplicht.",
+    fileType:
+      "Bestandstype niet toegelaten. Aanvaard: DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP.",
+    fileSize:
+      "De bestanden overschrijden de limiet van 4 MB. Pak een groter pakket in een ZIP of stuur het per e-mail.",
+    fileEmpty: "Een van de bestanden is leeg. Verwijder het en probeer opnieuw.",
+    tooManyFiles: "Maximaal 10 bestanden per aanvraag.",
+    sendFailed: `Versturen mislukt. Mail ons: ${siteConfig.contact.email} of bel: ${siteConfig.contact.phoneDisplay}.`,
+  },
 };
 
 /* ─── Small helpers ───────────────────────────────────────── */
@@ -243,7 +274,9 @@ export async function POST(request: Request) {
     );
   }
 
-  const locale: FormLocale = asString(form.get("locale"), 5) === "en" ? "en" : "pl";
+  const localeRaw = asString(form.get("locale"), 5);
+  const locale: FormLocale =
+    localeRaw === "en" || localeRaw === "nl" ? localeRaw : "pl";
   const t = ERRORS[locale];
 
   if (isRateLimited(ip)) {
@@ -475,7 +508,9 @@ export async function POST(request: Request) {
       subject:
         locale === "en"
           ? "We received your request — StretchMetal"
-          : "Otrzymaliśmy Twoje zapytanie — StretchMetal",
+          : locale === "nl"
+            ? "Wij hebben uw aanvraag ontvangen — StretchMetal"
+            : "Otrzymaliśmy Twoje zapytanie — StretchMetal",
       html: buildAutoReplyEmail({ locale, name, hasFiles: files.length > 0 }),
     });
   } catch (err) {
@@ -736,20 +771,35 @@ function buildAutoReplyEmail(d: AutoReplyData): string {
           contactLead: "Need it faster? Contact us directly:",
           signoff: "StretchMetal — part of Stretchgroup",
         }
-      : {
-          title: "Otrzymaliśmy Twoje zapytanie",
-          greeting: `Dzień dobry${safeName ? `, ${safeName}` : ""},`,
-          body: [
-            "Dziękujemy za zapytanie. Trafiło bezpośrednio do naszego zespołu technicznego w Częstochowie — bez kolejki zgłoszeń i bez call center.",
-            // [CONFIRM] 48 h response time
-            "W ciągu <strong>48 godzin</strong> odezwie się inżynier z wyceną albo pytaniami technicznymi. Jeśli coś w dokumentacji będzie wymagało doprecyzowania — najpierw zadzwonimy lub napiszemy.",
-            d.hasFiles
-              ? "Twoje pliki traktujemy jako poufne i wykorzystujemy wyłącznie do przygotowania wyceny. Na życzenie podpisujemy NDA."
-              : "Jeśli masz rysunki techniczne (DXF, DWG, STEP, PDF), odpowiedz na tę wiadomość i załącz je — przyspieszy to wycenę.",
-          ],
-          contactLead: "Potrzebujesz szybciej? Skontaktuj się bezpośrednio:",
-          signoff: "StretchMetal — część Stretchgroup",
-        };
+      : d.locale === "nl"
+        ? {
+            title: "Wij hebben uw aanvraag ontvangen",
+            greeting: `Beste ${safeName},`,
+            body: [
+              "Bedankt voor uw aanvraag. Ze is rechtstreeks bij ons engineeringteam in Częstochowa terechtgekomen — geen ticketwachtrij, geen callcenter.",
+              // [CONFIRM] 48 h response time
+              "Binnen <strong>48 uur</strong> ontvangt u van een ingenieur een offerte of technische vragen. Vraagt iets in uw tekeningen om verduidelijking, dan bellen of mailen wij eerst — gewoon in het Nederlands.",
+              d.hasFiles
+                ? "Uw bestanden worden vertrouwelijk behandeld en uitsluitend gebruikt om de offerte op te stellen. Een NDA is op verzoek beschikbaar."
+                : "Hebt u technische tekeningen (DXF, DWG, STEP, PDF)? Beantwoord deze e-mail en voeg ze toe — dat versnelt de offerte.",
+            ],
+            contactLead: "Sneller nodig? Neem rechtstreeks contact op:",
+            signoff: "StretchMetal — onderdeel van Stretchgroup",
+          }
+        : {
+            title: "Otrzymaliśmy Twoje zapytanie",
+            greeting: `Dzień dobry${safeName ? `, ${safeName}` : ""},`,
+            body: [
+              "Dziękujemy za zapytanie. Trafiło bezpośrednio do naszego zespołu technicznego w Częstochowie — bez kolejki zgłoszeń i bez call center.",
+              // [CONFIRM] 48 h response time
+              "W ciągu <strong>48 godzin</strong> odezwie się inżynier z wyceną albo pytaniami technicznymi. Jeśli coś w dokumentacji będzie wymagało doprecyzowania — najpierw zadzwonimy lub napiszemy.",
+              d.hasFiles
+                ? "Twoje pliki traktujemy jako poufne i wykorzystujemy wyłącznie do przygotowania wyceny. Na życzenie podpisujemy NDA."
+                : "Jeśli masz rysunki techniczne (DXF, DWG, STEP, PDF), odpowiedz na tę wiadomość i załącz je — przyspieszy to wycenę.",
+            ],
+            contactLead: "Potrzebujesz szybciej? Skontaktuj się bezpośrednio:",
+            signoff: "StretchMetal — część Stretchgroup",
+          };
 
   return `<!DOCTYPE html>
 <html lang="${d.locale}">

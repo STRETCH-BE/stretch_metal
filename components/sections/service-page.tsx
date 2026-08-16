@@ -114,6 +114,23 @@ const SECTION_STRINGS: Record<Locale, SectionStrings> = {
       ctaSecondary: "Contact us",
     },
   },
+  nl: {
+    specEyebrow: "Specificaties",
+    specNote: "Richtwaarden — we bevestigen ze in uw offerte.",
+    applicationsEyebrow: "Toepassingen",
+    faqEyebrow: "FAQ",
+    faqTitle: "Veelgestelde vragen",
+    relatedEyebrow: "Diensten",
+    relatedTitle: "Bekijk ook",
+    relatedLink: "Bekijk dienst",
+    ctaFinal: {
+      title: "Stuur uw tekening. Ontvang uw onderdelen.",
+      accent: "tekening.",
+      lead: "Het offerteformulier aanvaardt DXF, DWG, STEP en PDF. U krijgt een vaste prijs en een vaste termijn terug.",
+      cta: "Stuur uw tekening",
+      ctaSecondary: "Contact",
+    },
+  },
 };
 
 /** Wraps the accent substring of a title in the single allowed red span. */

@@ -6,7 +6,11 @@
  *
  * Pure <form> element, no section wrapper — the RFQ page renders it
  * inside its own two-column shell. All copy arrives via `content`
- * (RfqContent), so the same component serves /wycena and /en/quote.
+ * (RfqContent), so the same component serves /wycena, /en/quote and
+ * /nl/offerte. The only locale-branched behavior is route lookup: the
+ * consent link (routes.privacy) and the post-submit redirect
+ * (routes.rfqThanks) — both resolved through the i18n route table,
+ * never hardcoded.
  *
  * Submission: multipart/form-data POST to /api/rfq (files can't ride in
  * JSON). Field names match the API contract in the build brief exactly —
@@ -36,6 +40,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics";
 import { routes } from "@/lib/i18n-routes";
+import type { Locale } from "@/lib/site-config";
 import type { RfqContent, ServiceKey } from "@/content/types";
 
 const ACCEPT_EXTENSIONS = [
@@ -72,7 +77,7 @@ export function RfqForm({
   locale,
 }: {
   content: RfqContent;
-  locale: "pl" | "en";
+  locale: Locale;
 }) {
   const router = useRouter();
   const form = content.form;

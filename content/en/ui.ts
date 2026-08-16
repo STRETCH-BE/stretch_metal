@@ -30,7 +30,10 @@ export const nav: NavContent = {
     { label: "Contact", href: routes.contact.en },
   ],
   cta: "Send your drawing",
-  switcher: { label: "PL", href: routes.home.pl },
+  switchers: [
+    { target: "pl", label: "PL" },
+    { target: "nl", label: "NL" },
+  ],
   menuOpen: "Menu",
   menuClose: "Close",
 };

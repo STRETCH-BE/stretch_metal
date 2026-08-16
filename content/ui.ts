@@ -36,7 +36,10 @@ export const nav: NavContent = {
     { label: "Kontakt", href: routes.contact.pl },
   ],
   cta: "Wyślij rysunek",
-  switcher: { label: "EN", href: routes.home.en },
+  switchers: [
+    { target: "en", label: "EN" },
+    { target: "nl", label: "NL" },
+  ],
   menuOpen: "Menu",
   menuClose: "Zamknij",
 };

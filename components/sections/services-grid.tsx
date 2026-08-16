@@ -42,6 +42,7 @@ type Props = {
 const CARD_LINK_LABEL: Record<Locale, string> = {
   pl: "Zobacz usługę",
   en: "View service",
+  nl: "Bekijk dienst",
 };
 
 /** Wraps the accent substring of a title in the single allowed red span. */

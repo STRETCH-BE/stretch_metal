@@ -8,11 +8,13 @@
  * red underline. Copy-free — all labels and hrefs arrive via `content`
  * (NavContent from /content/ui.ts per locale).
  *
- * Structure: Logo left · desktop links · language switcher · primary CTA
+ * Structure: Logo left · desktop links · language switchers · primary CTA
  * (TrackedCTA `cta_click` {location:"nav"} → the locale's RFQ route).
- * The switcher keeps its label from content but computes its href from
- * the current pathname (alternatePath) — it lands on the EQUIVALENT
- * page in the other locale, not that locale's homepage.
+ * The switchers are compact hard-edged chips, one per OTHER locale
+ * (content.switchers, in display order). Each keeps its label from
+ * content but computes its href from the current pathname
+ * (alternatePath) — it lands on the EQUIVALENT page in the target
+ * locale, not that locale's homepage.
  *
  * Mobile menu: hamburger with aria-expanded/aria-controls, full-screen
  * black overlay, Escape closes and returns focus to the toggle, body
@@ -43,7 +45,20 @@ type Props = {
 const A11Y_LABELS: Record<Locale, { skip: string; nav: string }> = {
   pl: { skip: "Przejdź do treści", nav: "Nawigacja główna" },
   en: { skip: "Skip to content", nav: "Main navigation" },
+  nl: { skip: "Ga naar inhoud", nav: "Hoofdnavigatie" },
 };
+
+/** Switcher chip aria-labels — the target language's own name, so a
+ *  screen reader announces the destination, not the two-letter code. */
+const LANGUAGE_NAMES: Record<Locale, string> = {
+  pl: "Polski",
+  en: "English",
+  nl: "Nederlands",
+};
+
+/** Compact hard-edged switcher chip (shared desktop + mobile styling). */
+const switcherChip =
+  "inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-line-dark px-3 text-[12px] font-bold uppercase tracking-[0.14em] text-on-dark-soft transition-colors hover:border-white hover:text-white";
 
 export function Nav({ content, locale, currentPath }: Props) {
   const routerPath = usePathname();
@@ -52,8 +67,6 @@ export function Nav({ content, locale, currentPath }: Props) {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const a11y = A11Y_LABELS[locale];
   const rfqHref = routes.rfq[locale];
-  /* Switcher targets the EQUIVALENT page in the other locale, not home. */
-  const switcherHref = alternatePath(pathname, locale === "pl" ? "en" : "pl");
 
   /* Close on route change (link clicks also close eagerly below). */
   useEffect(() => {
@@ -83,7 +96,11 @@ export function Nav({ content, locale, currentPath }: Props) {
 
   /** Active when on the page or anywhere below it (e.g. /uslugi/spawanie). */
   const isActive = (href: string) => {
-    if (href === routes.home.pl || href === routes.home.en) {
+    if (
+      href === routes.home.pl ||
+      href === routes.home.en ||
+      href === routes.home.nl
+    ) {
       return pathname === href;
     }
     return pathname === href || pathname.startsWith(`${href}/`);
@@ -122,12 +139,19 @@ export function Nav({ content, locale, currentPath }: Props) {
           </ul>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <Link
-              href={switcherHref}
-              className="inline-flex min-h-[44px] items-center border border-line-dark px-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-on-dark-soft transition-colors hover:border-white hover:text-white"
-            >
-              {content.switcher.label}
-            </Link>
+            {/* One chip per OTHER locale — href follows the current page. */}
+            <div className="flex items-center gap-2">
+              {content.switchers.map((s) => (
+                <Link
+                  key={s.target}
+                  href={alternatePath(pathname, s.target)}
+                  aria-label={LANGUAGE_NAMES[s.target]}
+                  className={switcherChip}
+                >
+                  {s.label}
+                </Link>
+              ))}
+            </div>
 
             <TrackedCTA
               event="cta_click"
@@ -194,13 +218,19 @@ export function Nav({ content, locale, currentPath }: Props) {
             </ul>
 
             <div className="mt-auto flex flex-col gap-5 pt-10">
-              <Link
-                href={switcherHref}
-                onClick={() => setOpen(false)}
-                className="inline-flex min-h-[44px] w-fit items-center border border-line-dark px-4 text-[12px] font-bold uppercase tracking-[0.14em] text-on-dark-soft"
-              >
-                {content.switcher.label}
-              </Link>
+              <div className="flex items-center gap-2.5">
+                {content.switchers.map((s) => (
+                  <Link
+                    key={s.target}
+                    href={alternatePath(pathname, s.target)}
+                    onClick={() => setOpen(false)}
+                    aria-label={LANGUAGE_NAMES[s.target]}
+                    className={switcherChip}
+                  >
+                    {s.label}
+                  </Link>
+                ))}
+              </div>
 
               <TrackedCTA
                 event="cta_click"

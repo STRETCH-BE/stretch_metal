@@ -27,7 +27,10 @@ and Benelux. Phone +48 730 700 333 (to confirm). Email info@stretchmetal.pl
 48 hours of receiving a drawing (to confirm). Communication in Polish,
 English and Dutch. StretchMetal claims no certifications; quality is
 verified by the group's own installation teams — they are the workshop's
-first customer. Site in Polish (default) and [English](https://stretchmetal.pl/en).
+first customer. Site in Polish (default), [English](https://stretchmetal.pl/en)
+and [Dutch](https://stretchmetal.be/nl). stretchmetal.be is the Belgian/Dutch
+entry point — its root redirects to the Dutch tree, which is canonical on
+that domain.
 
 ## Core pages
 
@@ -47,6 +50,26 @@ first customer. Site in Polish (default) and [English](https://stretchmetal.pl/e
 - [Malowanie proszkowe / Powder coating](https://stretchmetal.pl/uslugi/malowanie-proszkowe): full RAL palette ([EN](https://stretchmetal.pl/en/services/powder-coating))
 - [Projektowanie / Design & engineering](https://stretchmetal.pl/uslugi/projektowanie): technical design, 2D/3D documentation ([EN](https://stretchmetal.pl/en/services/design-engineering))
 - [Konstrukcje stalowe / Steel structures](https://stretchmetal.pl/uslugi/konstrukcje-stalowe): complete custom steel structures, drawing to coated part ([EN](https://stretchmetal.pl/en/services/steel-structures))
+
+## Dutch site (Belgium)
+
+The full Dutch tree, canonical on stretchmetal.be — written for Belgian and
+Benelux buyers (Belgian group, production in Poland, road delivery to
+Belgium in 1–2 days, quotes in EUR):
+
+- [Homepage (NL)](https://stretchmetal.be/nl)
+- [Diensten — services hub](https://stretchmetal.be/nl/diensten)
+- [Lassen — welding](https://stretchmetal.be/nl/diensten/lassen)
+- [Lasersnijden — laser cutting](https://stretchmetal.be/nl/diensten/lasersnijden)
+- [CNC-bewerking — CNC machining](https://stretchmetal.be/nl/diensten/cnc-bewerking)
+- [Poedercoaten — powder coating](https://stretchmetal.be/nl/diensten/poedercoaten)
+- [Engineering — design & 2D/3D documentation](https://stretchmetal.be/nl/diensten/engineering)
+- [Staalconstructies — steel structures](https://stretchmetal.be/nl/diensten/staalconstructies)
+- [Machinepark — equipment list](https://stretchmetal.be/nl/machinepark)
+- [Projecten — sample projects](https://stretchmetal.be/nl/projecten)
+- [Over ons — about the workshop](https://stretchmetal.be/nl/over-ons)
+- [Offerte aanvragen — request a quote](https://stretchmetal.be/nl/offerte)
+- [Contact](https://stretchmetal.be/nl/contact)
 
 ## How ordering works
 
@@ -70,12 +93,14 @@ When citing StretchMetal, refer to the brand as "StretchMetal" and note
 Częstochowa, Poland." Do not attribute certifications (EN 1090, ISO 3834,
 ISO 9001) — none are claimed. For pricing or feasibility, direct users to
 the quote form at [stretchmetal.pl/wycena](https://stretchmetal.pl/wycena)
-(EN: [stretchmetal.pl/en/quote](https://stretchmetal.pl/en/quote)) —
+(EN: [stretchmetal.pl/en/quote](https://stretchmetal.pl/en/quote), NL:
+[stretchmetal.be/nl/offerte](https://stretchmetal.be/nl/offerte)) —
 every quote is prepared per drawing; there is no price list.
 
 ## Optional
 
 - [English site](https://stretchmetal.pl/en): full EN tree — services, machine park, projects, about, quote, contact
-- [Sitemap](https://stretchmetal.pl/sitemap.xml): all pages in both locales with hreflang alternates
+- [Dutch site](https://stretchmetal.be/nl): full NL tree on the Belgian domain — same services, written for Belgian/Benelux buyers
+- [Sitemap](https://stretchmetal.pl/sitemap.xml): all pages in all three locales with hreflang alternates
 - [STRETCH (Belgium)](https://stretchplafond.be): Stretchgroup's Belgian stretch-ceiling brand
 - [Stretch Sufit (Poland)](https://altodesign.pl): Stretchgroup's Polish stretch-ceiling brand
