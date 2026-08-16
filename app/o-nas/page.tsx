@@ -171,6 +171,8 @@ export default function AboutPage() {
               <FadeIn delay={120}>
                 <WorkshopImage
                   caption={FRAME.storyImageCaption}
+                  src="/images/about/welding-detail.jpg"
+                  alt="Głowica spawalnicza nad stołem montażowym — detal z hali StretchMetal"
                   aspect="aspect-[4/5]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />

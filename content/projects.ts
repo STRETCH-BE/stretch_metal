@@ -22,6 +22,7 @@ export const projects: Project[] = [
     material: "Stal S235, profile zamknięte 30 × 30 mm", // [CONFIRM]
     finish: "Malowanie proszkowe, RAL 9005 mat", // [CONFIRM]
     imageCaption: "ZDJĘCIE: partia spawanych ram podkonstrukcji na palecie transportowej",
+    image: "/images/projects/ceiling-substructure.jpg",
     description:
       "Powtarzalna produkcja dla ekip montażowych Stretchgroup w Belgii i Polsce: ramy i profile nośne pod sufity napinane. Serie schodzą z przyrządów spawalniczych, więc każda rama ma tę samą geometrię. To zlecenie, dla którego ten warsztat powstał.",
   },
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     material: "Blacha stalowa 1,5–2,0 mm", // [CONFIRM]
     finish: "RAL 9016, struktura drobna", // [CONFIRM]
     imageCaption: "ZDJĘCIE: kanały świetlne po malowaniu, przed pakowaniem",
+    image: "/images/projects/powder-coating-light-channels.jpg",
     description:
       "Kanały pod liniowe oświetlenie LED w sufitach napinanych: rozwinięcie cięte laserem, gięcie na prasie krawędziowej, malowanie pod kolor membrany. Długości na wymiar pomieszczenia, pakowane w kolejności montażu.",
   },
@@ -40,6 +42,7 @@ export const projects: Project[] = [
     material: "Stal S355, blacha 8–12 mm", // [CONFIRM]
     finish: "Malowanie proszkowe, RAL 7016", // [CONFIRM]
     imageCaption: "ZDJĘCIE: wsporniki po spawaniu, przed frezowaniem otworów pasowanych",
+    image: "/images/projects/machine-brackets.jpg",
     description:
       "Partia wsporników pod urządzenia dla klienta przemysłowego. Otwory pasowane frezowane po spawaniu — geometria w tolerancji mimo skurczu spawalniczego. Od pliku STEP do dostawy w trzy tygodnie.", // [CONFIRM] termin
   },
@@ -49,6 +52,7 @@ export const projects: Project[] = [
     material: "Stal — profile i blacha 2–3 mm", // [CONFIRM]
     finish: "Malowanie proszkowe, RAL 9005 półmat", // [CONFIRM]
     imageCaption: "ZDJĘCIE: rama LED podczas montażu próbnego na hali",
+    image: "/images/projects/laser-cut-profiles.jpg",
     description:
       "Lekkie ramy pod panele LED do zabudowy wystawienniczej. Konstruktor przygotował model 3D na podstawie szkicu klienta; ramy podzielone na segmenty ze złączami śrubowymi pod szybki montaż i demontaż.",
   },

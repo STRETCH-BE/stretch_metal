@@ -166,6 +166,8 @@ export default function AboutPage() {
               <FadeIn delay={120}>
                 <WorkshopImage
                   caption={FRAME.storyImageCaption}
+                  src="/images/about/welding-detail.jpg"
+                  alt="Welding head over a fixture table — detail from the StretchMetal workshop"
                   aspect="aspect-[4/5]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />

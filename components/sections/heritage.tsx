@@ -80,6 +80,8 @@ export function Heritage({ content, number = "06" }: Props) {
           <FadeIn delay={140} className="lg:pt-12">
             <WorkshopImage
               caption={content.imageCaption}
+              src={content.image}
+              alt={content.imageAlt}
               aspect="aspect-[4/3] lg:aspect-[4/5]"
               sizes="(max-width: 1024px) 100vw, 40vw"
               className="border border-line-dark"

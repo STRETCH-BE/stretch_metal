@@ -90,6 +90,8 @@ export function Hero({ content, locale }: Props) {
           <FadeIn delay={160}>
             <WorkshopImage
               caption={content.imageCaption}
+              src={content.image}
+              alt={content.imageAlt}
               aspect="aspect-[4/3] lg:aspect-[4/5]"
               sizes="(max-width: 1024px) 100vw, 40vw"
               priority

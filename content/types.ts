@@ -104,6 +104,9 @@ export type HomeContent = {
     ctaPrimary: string;
     ctaSecondary: string;
     imageCaption: string;
+    /** Real photo path (public/…) — when set, replaces the placeholder. */
+    image?: string;
+    imageAlt?: string;
   };
   ticker: string[];
   stats: {
@@ -144,6 +147,9 @@ export type HomeContent = {
     /** Sister-brand links rendered under the story. */
     brands: { name: string; description: string; url: string }[];
     imageCaption: string;
+    /** Real photo path (public/…) — when set, replaces the placeholder. */
+    image?: string;
+    imageAlt?: string;
   };
   projects: {
     eyebrow: string;

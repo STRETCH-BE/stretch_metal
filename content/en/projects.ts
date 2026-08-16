@@ -22,6 +22,7 @@ export const projects: Project[] = [
     material: "Structural steel S235", // [CONFIRM]
     finish: "Powder coat, RAL 9005 matt", // [CONFIRM]
     imageCaption: "Substructure frames — series production for the group",
+    image: "/images/projects/ceiling-substructure.jpg",
     description:
       "Repeat series of welded mounting frames for the Stretchgroup's stretch-ceiling installations in Belgium and Poland — the product line this workshop was founded to build. Laser-cut components with tab-and-slot location, welded in fixtures for repeatability, coated in-house and shipped with the group's installation crews' schedule as the deadline. Around 200 frames per month across variants.", // [CONFIRM] volume
   },
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     material: "Steel sheet, 1.5 mm", // [CONFIRM]
     finish: "Powder coat, RAL 9016 satin", // [CONFIRM]
     imageCaption: "Formed light channels after coating",
+    image: "/images/projects/powder-coating-light-channels.jpg",
     description:
       "Long formed channels for linear lighting: cut on the fiber laser, folded on the CNC press brake in lengths up to 3 m, and powder-coated in-house so the visible surface arrives unmarked. Colour consistency held batch to batch across a running series — the same powder specification on every reorder.", // [CONFIRM] max length
   },
@@ -40,6 +42,7 @@ export const projects: Project[] = [
     material: "Steel S355, 4–8 mm", // [CONFIRM]
     finish: "Powder coat, RAL 7016", // [CONFIRM]
     imageCaption: "Welded bracket set, batch before dispatch",
+    image: "/images/projects/machine-brackets.jpg",
     description:
       "A family of load-bearing brackets developed from the client's 2D sketch: our engineering produced the 3D models and flat patterns, first articles were approved on photos and dimensions, then the batch ran. From sketch to delivered, coated parts in three weeks.", // [CONFIRM] lead time
   },
@@ -49,6 +52,7 @@ export const projects: Project[] = [
     material: "Aluminium", // [CONFIRM] alloy
     finish: "Mill finish, ready for anodising", // [CONFIRM]
     imageCaption: "Aluminium carriers — TIG-welded, machined ends",
+    image: "/images/projects/laser-cut-profiles.jpg",
     description:
       "Aluminium carrier assemblies for LED profile systems: sawn and machined extrusions joined by TIG (AC) welding, end faces milled square after welding so the carriers align in continuous runs. Built to the tolerances lighting installers actually need on site — because our own installers set them.",
   },

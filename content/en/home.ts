@@ -28,6 +28,8 @@ export const home: HomeContent = {
     ctaPrimary: "Send your drawing",
     ctaSecondary: "See our services",
     imageCaption: "Workshop floor — Częstochowa, Poland",
+    image: "/images/hero/tig-welding-aluminium.jpg",
+    imageAlt: "TIG welding of aluminium on a fixture table at the StretchMetal workshop",
   },
 
   ticker: [
@@ -180,6 +182,8 @@ export const home: HomeContent = {
       },
     ],
     imageCaption: "Group production — Belgium & Poland",
+    image: "/images/heritage/steel-substructure-stretch-ceiling.jpg",
+    imageAlt: "Steel substructure supporting a backlit stretch ceiling — a group installation",
   },
 
   projects: {

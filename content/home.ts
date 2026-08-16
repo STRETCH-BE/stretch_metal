@@ -32,6 +32,8 @@ export const home: HomeContent = {
     ctaPrimary: "Wyślij rysunek do wyceny",
     ctaSecondary: "Zobacz usługi",
     imageCaption: "ZDJĘCIE: hala StretchMetal — stanowiska spawalnicze i strefa cięcia",
+    image: "/images/hero/tig-welding-aluminium.jpg",
+    imageAlt: "Spawanie TIG aluminium na stole montażowym w hali StretchMetal",
   },
 
   ticker: [
@@ -185,6 +187,8 @@ export const home: HomeContent = {
       },
     ],
     imageCaption: "ZDJĘCIE: montaż podkonstrukcji stalowej pod sufit napinany — realizacja grupy",
+    image: "/images/heritage/steel-substructure-stretch-ceiling.jpg",
+    imageAlt: "Stalowa podkonstrukcja pod podświetlanym sufitem napinanym — realizacja grupy",
   },
 
   projects: {

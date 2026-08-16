@@ -2,12 +2,12 @@
  * WorkshopImage — photography slot that degrades to a branded placeholder.
  * File path: /components/ui/workshop-image.tsx
  *
- * No photography exists yet. Until it does, every image slot renders a
- * dark #131313 block with a hairline diagonal-line pattern and a small
- * uppercase caption describing the future shot ("ZDJĘCIE: hala —
- * wycinarka laserowa"). When a real photo is supplied, add its path to
- * the content file (`image`) and this component switches to next/image —
- * no component changes needed.
+ * Slots without a photo yet render a dark #131313 block with a hairline
+ * diagonal-line pattern and a small uppercase caption describing the
+ * future shot ("ZDJĘCIE: hala — wycinarka laserowa"). When a real photo
+ * is supplied, add its path to the content file (`image`) and this
+ * component switches to next/image — no component changes needed. First
+ * real photos live under /public/images (hero, heritage, projects, about).
  *
  * The #131313 / #191919 pair is the placeholder's own texture, not a
  * design-system colour — it exists only here, which is why these two
