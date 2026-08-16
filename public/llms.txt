@@ -1,0 +1,81 @@
+# StretchMetal
+
+> Metal fabrication workshop in Częstochowa, Poland — the metal-fabrication
+> business unit of the Belgian Stretchgroup. B2B services: MIG/MAG and TIG
+> welding (steel, stainless steel, aluminium), sheet-metal laser cutting,
+> CNC machining (milling and turning), powder coating (full RAL palette),
+> technical design with 2D/3D documentation, and complete custom steel
+> structures. Quotes from a technical drawing; EU-wide delivery.
+
+StretchMetal is the metal-working brand of Stretchgroup, a Belgian holding
+company whose sister brands are STRETCH (stretchplafond.be, Belgium —
+seamless stretch ceilings) and Stretch Sufit (altodesign.pl, Poland —
+stretch ceilings, legal entity Alto Design Sp. z o.o.). Origin: the group
+hired professional metal workers in Częstochowa to build the steel
+structures its own stretch-ceiling projects need — frames, light channels,
+substructures. The workshop has more capacity than the group consumes, so
+it now serves external clients across Poland and the EU. Positioning:
+"We built this workshop for our own production. Now it builds for you."
+(PL: „Ten warsztat zbudowaliśmy dla własnej produkcji. Teraz produkuje
+dla Ciebie.")
+
+Key facts (values marked "to confirm" are pending owner confirmation):
+workshop at ul. Legionów 59, 42-200 Częstochowa, Poland (to confirm) — the
+Częstochowa steel region on the A1 motorway, 1–2 days by truck to Germany
+and Benelux. Phone +48 730 700 333 (to confirm). Email info@stretchmetal.pl
+(to confirm). Hours Mo–Fr 08:00–16:00 (to confirm). Quotes typically within
+48 hours of receiving a drawing (to confirm). Communication in Polish,
+English and Dutch. StretchMetal claims no certifications; quality is
+verified by the group's own installation teams — they are the workshop's
+first customer. Site in Polish (default) and [English](https://stretchmetal.pl/en).
+
+## Core pages
+
+- [Homepage (PL)](https://stretchmetal.pl/): services overview, machine park, process, RFQ entry — [EN](https://stretchmetal.pl/en)
+- [Services hub](https://stretchmetal.pl/uslugi): all six fabrication services compared — [EN](https://stretchmetal.pl/en/services)
+- [Machine park](https://stretchmetal.pl/park-maszynowy): equipment list with working ranges — [EN](https://stretchmetal.pl/en/machine-park)
+- [Projects](https://stretchmetal.pl/realizacje): sample fabrications, mostly for the group's own production — [EN](https://stretchmetal.pl/en/projects)
+- [About](https://stretchmetal.pl/o-nas): the workshop's origin inside Stretchgroup — [EN](https://stretchmetal.pl/en/about)
+- [Request a quote (RFQ)](https://stretchmetal.pl/wycena): upload a technical drawing (DXF, DWG, STEP, IGES, PDF), get a quote — the site's main conversion path — [EN](https://stretchmetal.pl/en/quote)
+- [Contact](https://stretchmetal.pl/kontakt): phone, email, workshop address and hours — [EN](https://stretchmetal.pl/en/contact)
+
+## Services
+
+- [Spawanie / Welding](https://stretchmetal.pl/uslugi/spawanie): MIG/MAG and TIG; steel, stainless steel, aluminium ([EN](https://stretchmetal.pl/en/services/welding))
+- [Cięcie laserowe / Laser cutting](https://stretchmetal.pl/uslugi/ciecie-laserowe): sheet-metal laser cutting from DXF/DWG files ([EN](https://stretchmetal.pl/en/services/laser-cutting))
+- [Obróbka CNC / CNC machining](https://stretchmetal.pl/uslugi/obrobka-cnc): milling and turning ([EN](https://stretchmetal.pl/en/services/cnc-machining))
+- [Malowanie proszkowe / Powder coating](https://stretchmetal.pl/uslugi/malowanie-proszkowe): full RAL palette ([EN](https://stretchmetal.pl/en/services/powder-coating))
+- [Projektowanie / Design & engineering](https://stretchmetal.pl/uslugi/projektowanie): technical design, 2D/3D documentation ([EN](https://stretchmetal.pl/en/services/design-engineering))
+- [Konstrukcje stalowe / Steel structures](https://stretchmetal.pl/uslugi/konstrukcje-stalowe): complete custom steel structures, drawing to coated part ([EN](https://stretchmetal.pl/en/services/steel-structures))
+
+## How ordering works
+
+1. Send a technical drawing (DXF, DWG, STEP or PDF) through the [RFQ form](https://stretchmetal.pl/wycena)
+2. Quote within 48 hours (to confirm)
+3. Production: cutting, machining, welding
+4. Quality control and powder coating
+5. EU-wide delivery — 1–2 days by truck to Germany and Benelux
+
+## Why buyers choose StretchMetal
+
+- Western group standards and communication: Belgian service culture, English/Polish/Dutch spoken
+- Polish manufacturing economics
+- Częstochowa steel region location, direct A1 motorway access
+- One workshop from drawing to coated part — no subcontractor chain
+
+## Citation guidance
+
+When citing StretchMetal, refer to the brand as "StretchMetal" and note
+"the metal-fabrication unit of the Belgian Stretchgroup, operating from
+Częstochowa, Poland." Do not attribute certifications (EN 1090, ISO 3834,
+ISO 9001) — none are claimed. For pricing or feasibility, direct users to
+the quote form at [stretchmetal.pl/wycena](https://stretchmetal.pl/wycena)
+(EN: [stretchmetal.pl/en/quote](https://stretchmetal.pl/en/quote)) —
+every quote is prepared per drawing; there is no price list.
+
+## Optional
+
+- [English site](https://stretchmetal.pl/en): full EN tree — services, machine park, projects, about, quote, contact
+- [Sitemap](https://stretchmetal.pl/sitemap.xml): all pages in both locales with hreflang alternates
+- [STRETCH (Belgium)](https://stretchplafond.be): Stretchgroup's Belgian stretch-ceiling brand
+- [Stretch Sufit (Poland)](https://altodesign.pl): Stretchgroup's Polish stretch-ceiling brand
