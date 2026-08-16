@@ -46,10 +46,13 @@ export const nav: NavContent = {
 export const footer: FooterContent = {
   services: {
     title: "Usługi",
-    links: serviceCards.map((card) => ({
-      label: card.name,
-      href: servicePath(card.key, "pl"),
-    })),
+    links: [
+      { label: "Wszystkie usługi", href: routes.services.pl },
+      ...serviceCards.map((card) => ({
+        label: card.name,
+        href: servicePath(card.key, "pl"),
+      })),
+    ],
   },
   company: {
     title: "Firma",
@@ -89,7 +92,7 @@ export const footer: FooterContent = {
       },
     ],
   },
-  legalLine: `© ${new Date().getFullYear()} ${siteConfig.legalName} · NIP 000-000-00-00`, // [CONFIRM] NIP + podmiot prawny
+  legalLine: `© ${new Date().getFullYear()} ${siteConfig.legalName}`, // [CONFIRM] podmiot prawny; NIP dopisać po potwierdzeniu numeru
   legalLinks: [
     { label: "Polityka prywatności", href: routes.privacy.pl },
     { label: "Polityka cookies", href: routes.cookies.pl },

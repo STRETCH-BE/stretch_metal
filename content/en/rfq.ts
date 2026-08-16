@@ -22,7 +22,7 @@ import { siteConfig } from "@/lib/site-config";
 export const rfq: RfqContent = {
   metaTitle: "Quote — send your drawing", // template appends "| StretchMetal"
   metaDescription:
-    "Attach your drawing (DXF, DWG, STEP, PDF) and describe the job. An engineer replies with a quote or technical questions within 48 working hours.", // [CONFIRM] 48 h
+    "Attach your drawing (DXF, DWG, STEP, PDF) and describe the job. An engineer replies with a quote or technical questions within 48 hours.", // [CONFIRM] 48 h
 
   hero: {
     eyebrow: "Request a quote",
@@ -76,13 +76,14 @@ export const rfq: RfqContent = {
       "What should we build? Dimensions, thicknesses, material grade, RAL colour, quantities. The more specific, the faster the quote.",
     files: {
       label: "Files — drawings and documentation",
-      hint: "DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP · max 10 files, 15 MB total",
+      hint: "DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP · max 10 files, 4 MB total — ZIP larger packages or send them by email",
       drop: "Drag and drop files here",
       browse: "Browse files",
       remove: "Remove",
       errorType:
         "File type not supported or file is empty. Accepted: DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP.",
-      errorSize: "File limit: max 10 files, 15 MB total.",
+      errorSize:
+        "File limit: max 10 files, 4 MB total. ZIP a larger package or send it by email.",
     },
     consent:
       "I consent to the processing of my data for the purpose of preparing a quote and follow-up contact, in line with the",
@@ -100,7 +101,7 @@ export const rfq: RfqContent = {
       {
         title: "Reply within 48 hours", // [CONFIRM] quote turnaround
         description:
-          "A quote or technical questions within 48 working hours. No autoresponders — you hear from the person who priced your job.",
+          "A quote or technical questions within 48 hours. No autoresponders — you hear from the person who priced your job.",
       },
       {
         title: "Your files stay confidential",
@@ -157,7 +158,7 @@ export const rfq: RfqContent = {
       {
         question: "Which file formats can I attach?",
         answer:
-          "DXF or DWG for laser cutting, STEP/STP or IGES/IGS for CNC machining and 3D models, PDF for assembly drawings. Multiple files can go into a ZIP. The upload limit is 15 MB total — for larger documentation packages, mention it and we will send a transfer link.",
+          "DXF or DWG for laser cutting, STEP/STP or IGES/IGS for CNC machining and 3D models, PDF for assembly drawings. Multiple files can go into a ZIP. The upload limit is 4 MB total — for larger documentation packages, mention it and we will send a transfer link.",
       },
       {
         question: "What speeds up the quote?",
@@ -194,7 +195,7 @@ export const rfq: RfqContent = {
     lead: "Thank you. Your enquiry and files went straight to the engineering team in Częstochowa.",
     steps: [
       "A confirmation is on its way to your email address.",
-      "An engineer will review the documentation and reply with a quote or questions within 48 working hours.", // [CONFIRM] 48 h
+      "An engineer will review the documentation and reply with a quote or questions within 48 hours.", // [CONFIRM] 48 h
       "Your files are confidential — they are used only to prepare the offer.",
     ],
     backHome: "Back to the homepage",

@@ -52,7 +52,7 @@ const COPY = {
     title: "Company data",
     // [CONFIRM] legal entity — StretchMetal brand within the group structure
     legal: `${siteConfig.legalName} — owner of the ${siteConfig.name} brand`,
-    vat: "VAT ID (NIP): 000-000-00-00", // [CONFIRM] NIP / VAT ID
+    // [CONFIRM] NIP / VAT ID — re-add the row once the number is confirmed
   },
   map: {
     caption: "MAP: Częstochowa — ul. Legionów 59",
@@ -175,8 +175,6 @@ export default function ContactPage() {
                     <BlockTitle>{COPY.company.title}</BlockTitle>
                     <p className="mt-3 text-[14px] leading-relaxed text-text-muted">
                       {COPY.company.legal}
-                      <br />
-                      {COPY.company.vat}
                     </p>
                   </div>
 

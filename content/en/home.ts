@@ -16,6 +16,7 @@
  */
 
 import type { HomeContent } from "@/content/types";
+import { siteConfig } from "@/lib/site-config";
 import { serviceCards } from "./services";
 
 export const home: HomeContent = {
@@ -44,7 +45,7 @@ export const home: HomeContent = {
       { value: "1 200 m²", label: "production floor" }, // [CONFIRM]
       { value: "48 h", label: "to a quote from your drawing" }, // [CONFIRM]
       { value: "20 t", label: "of steel processed monthly" }, // [CONFIRM]
-      { value: "2", label: "countries, one group — BE + PL" }, // [CONFIRM]
+      { value: "1–2 days", label: "road delivery to DE & Benelux" }, // [CONFIRM]
     ],
   },
 
@@ -97,34 +98,34 @@ export const home: HomeContent = {
     lead: "A compact, complete line: cut, form, weld, machine and coat without a subcontractor in the chain. The full inventory is on the machine park page.",
     highlights: [
       {
-        name: "Fiber laser 3000 × 1500",
-        type: "Fiber laser cutting machine",
+        name: "Fiber laser cutting machine",
+        type: "Sheet cutting",
         specs: [
-          { label: "Sheet format", value: "3 000 × 1 500 mm" }, // [CONFIRM]
-          { label: "Structural steel", value: "up to 20 mm" }, // [CONFIRM]
+          { label: "Laser power", value: "6 kW" }, // [CONFIRM]
+          { label: "Working area", value: "3 000 × 1 500 mm" }, // [CONFIRM]
         ],
       },
       {
         name: "CNC press brake",
-        type: "Hydraulic CNC press brake",
+        type: "Sheet bending",
         specs: [
-          { label: "Bending length", value: "3 000 mm" }, // [CONFIRM]
           { label: "Press force", value: "135 t" }, // [CONFIRM]
+          { label: "Bending length", value: "3 000 mm" }, // [CONFIRM]
         ],
       },
       {
-        name: "CNC machining centre",
-        type: "3-axis vertical machining centre",
+        name: "CNC milling machine",
+        type: "Machining — milling",
         specs: [
-          { label: "Travels X/Y/Z", value: "1 000 × 500 × 500 mm" }, // [CONFIRM]
+          { label: "Table size", value: "1 000 × 500 mm" }, // [CONFIRM]
           { label: "Use", value: "Plates, housings, post-weld machining" },
         ],
       },
       {
-        name: "Powder coating line",
-        type: "Coating booth + curing oven",
+        name: "Powder coating line with oven",
+        type: "Powder coating shop",
         specs: [
-          { label: "Max part size", value: "3 000 × 1 500 × 2 000 mm" }, // [CONFIRM]
+          { label: "Max part size", value: "3 000 × 1 200 × 1 500 mm" }, // [CONFIRM]
           { label: "Colours", value: "Full RAL palette" }, // [CONFIRM]
         ],
       },
@@ -144,7 +145,7 @@ export const home: HomeContent = {
       {
         title: "Polish manufacturing economics",
         description:
-          "Częstochowa cost base, EU legal framework, no customs, no currency surprises. The saving is in the rate card, not in the quality.",
+          "Częstochowa cost base, EU legal framework, no customs, quotes in EUR on request. The saving is in the rate card, not in the quality.",
       },
       {
         title: "Steel region, A1 motorway",
@@ -168,14 +169,14 @@ export const home: HomeContent = {
     ],
     brands: [
       {
-        name: "STRETCH",
+        name: siteConfig.group.belgium.name,
         description: "Seamless stretch ceilings — Belgium",
-        url: "https://stretchplafond.be",
+        url: siteConfig.group.belgium.url,
       },
       {
-        name: "Stretch Sufit",
+        name: siteConfig.group.poland.name,
         description: "Stretch ceilings — Poland",
-        url: "https://altodesign.pl",
+        url: siteConfig.group.poland.url,
       },
     ],
     imageCaption: "Group production — Belgium & Poland",

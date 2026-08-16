@@ -77,7 +77,7 @@ export const about: AboutContent = {
   team: {
     eyebrow: "The team",
     title: "Metalworkers first",
-    lead: "Welders, machine operators and engineers recruited from the Częstochowa steel trade, run with the group's Belgian project discipline. Your point of contact is an engineer who reads your drawing and answers in English; the group also works in Dutch, French and Polish.",
+    lead: "Welders, machine operators and engineers recruited from the Częstochowa steel trade, run with the group's Belgian project discipline. Your point of contact is an engineer who reads your drawing and answers in English; the group also works in Dutch and Polish.",
     imageCaption: "The workshop team — Częstochowa",
   },
 

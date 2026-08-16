@@ -10,6 +10,9 @@
  *
  * Structure: Logo left · desktop links · language switcher · primary CTA
  * (TrackedCTA `cta_click` {location:"nav"} → the locale's RFQ route).
+ * The switcher keeps its label from content but computes its href from
+ * the current pathname (alternatePath) — it lands on the EQUIVALENT
+ * page in the other locale, not that locale's homepage.
  *
  * Mobile menu: hamburger with aria-expanded/aria-controls, full-screen
  * black overlay, Escape closes and returns focus to the toggle, body
@@ -26,7 +29,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/logo";
 import { TrackedCTA } from "@/components/ui/tracked-cta";
-import { routes } from "@/lib/i18n-routes";
+import { alternatePath, routes } from "@/lib/i18n-routes";
 import type { Locale } from "@/lib/site-config";
 import type { NavContent } from "@/content/types";
 
@@ -49,6 +52,8 @@ export function Nav({ content, locale, currentPath }: Props) {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const a11y = A11Y_LABELS[locale];
   const rfqHref = routes.rfq[locale];
+  /* Switcher targets the EQUIVALENT page in the other locale, not home. */
+  const switcherHref = alternatePath(pathname, locale === "pl" ? "en" : "pl");
 
   /* Close on route change (link clicks also close eagerly below). */
   useEffect(() => {
@@ -95,7 +100,7 @@ export function Nav({ content, locale, currentPath }: Props) {
         className="sticky top-0 z-50 border-b border-line-dark bg-black text-white"
       >
         <div className="container-sm flex h-[var(--header-h)] items-center justify-between gap-6">
-          <Logo tone="on-dark" size={20} />
+          <Logo tone="on-dark" size={20} locale={locale} />
 
           {/* Desktop links — active link gets the red text + red underline. */}
           <ul className="hidden items-center gap-7 lg:flex">
@@ -118,7 +123,7 @@ export function Nav({ content, locale, currentPath }: Props) {
 
           <div className="hidden items-center gap-4 lg:flex">
             <Link
-              href={content.switcher.href}
+              href={switcherHref}
               className="inline-flex min-h-[44px] items-center border border-line-dark px-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-on-dark-soft transition-colors hover:border-white hover:text-white"
             >
               {content.switcher.label}
@@ -190,7 +195,7 @@ export function Nav({ content, locale, currentPath }: Props) {
 
             <div className="mt-auto flex flex-col gap-5 pt-10">
               <Link
-                href={content.switcher.href}
+                href={switcherHref}
                 onClick={() => setOpen(false)}
                 className="inline-flex min-h-[44px] w-fit items-center border border-line-dark px-4 text-[12px] font-bold uppercase tracking-[0.14em] text-on-dark-soft"
               >

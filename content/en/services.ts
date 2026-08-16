@@ -93,7 +93,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
         },
         { label: "Material thickness", value: "1 – 30 mm" }, // [CONFIRM]
         { label: "Max assembly size", value: "6 000 × 2 000 × 2 000 mm" }, // [CONFIRM]
-        { label: "Max assembly weight", value: "up to 3 000 kg" }, // [CONFIRM]
+        { label: "Max assembly weight", value: "up to 2 000 kg" }, // [CONFIRM]
         {
           label: "Quality control",
           value:
@@ -161,7 +161,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       {
         question: "Who do we talk to during the project — and in what language?",
         answer:
-          "You get a direct engineering contact who speaks English; the group's home office in Belgium also works in Dutch and French. Technical questions are answered by people who read drawings, not by a call centre.",
+          "You get a direct engineering contact who speaks English; the group also works in Dutch and Polish. Technical questions are answered by people who read drawings, not by a call centre.",
       },
       {
         question: "How long does delivery to Germany or Benelux take?",
@@ -171,7 +171,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       {
         question: "Can you sign an NDA before we send drawings?",
         answer:
-          "Yes. We sign NDAs on request before any technical documentation changes hands — standard practice with our OEM customers. Send yours, or ask for our template.",
+          "Yes. We sign NDAs on request before any technical documentation changes hands — standard practice for industrial fabrication work. Send yours, or ask for our template.",
       },
     ],
     related: ["laser", "coating", "structures"],
@@ -183,7 +183,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
     name: "Laser cutting",
     metaTitle: "Laser Cutting Services in Poland",
     metaDescription:
-      "Fiber-laser sheet cutting in Częstochowa, Poland: steel, stainless, aluminium. Send a DXF, get a quote within 48 h. Road delivery to DE/BE/NL in 1-2 days.",
+      "Fiber-laser sheet cutting in Częstochowa, Poland: steel, stainless, aluminium. Send a DXF, get a quote within 48 h. Road delivery to DE/BE/NL in 1–2 days.",
     hero: {
       eyebrow: "Services",
       title: "Sheet-metal laser cutting",
@@ -529,12 +529,12 @@ export const services: Record<ServiceKey, ServiceContent> = {
       {
         question: "Do you sign NDAs before we discuss a project?",
         answer:
-          "Yes, routinely. Send your NDA or request our template before sharing any technical information. Confidentiality is standard practice with the OEM and machine-builder clients we serve.",
+          "Yes, routinely. Send your NDA or request our template before sharing any technical information. Confidentiality is standard practice for machine-builder and industrial projects.",
       },
       {
         question: "Can we work in English with your engineers?",
         answer:
-          "Yes — your engineering contact works in English, and drawings are issued in English on request. The Belgian home office also communicates in Dutch and French.",
+          "Yes — your engineering contact works in English, and drawings are issued in English on request. The Belgian home office also communicates in Dutch, and the workshop in Polish.",
       },
       {
         question: "Will you tell us if our design is more expensive than it needs to be?",
@@ -566,7 +566,10 @@ export const services: Record<ServiceKey, ServiceContent> = {
           value: "Mezzanines, platforms, support frames, stairs, railings, substructures",
         },
         { label: "Monthly capacity", value: "up to 20 t of processed steel" }, // [CONFIRM]
-        { label: "Max element size", value: "limited by road transport; typically ≤ 12 m" }, // [CONFIRM]
+        {
+          label: "Max welded assembly",
+          value: "6 000 × 2 000 × 2 000 mm; larger structures as bolted sections", // [CONFIRM]
+        },
         {
           label: "Surface protection",
           value: "Powder coating in-house; hot-dip galvanizing via partner plant", // [CONFIRM] partner

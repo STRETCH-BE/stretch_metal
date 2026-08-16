@@ -23,7 +23,7 @@ import { siteConfig } from "@/lib/site-config";
 export const rfq: RfqContent = {
   metaTitle: "Wycena — wyślij rysunek", // template appends "| StretchMetal"
   metaDescription:
-    "Załącz rysunek (DXF, DWG, STEP, PDF) i opisz zlecenie. Inżynier odpowie wyceną lub pytaniami w 48 h roboczych. Pliki traktujemy poufnie, NDA na życzenie.", // [CONFIRM] 48 h
+    "Załącz rysunek (DXF, DWG, STEP, PDF) i opisz zlecenie. Inżynier odpowie wyceną lub pytaniami w 48 h. Pliki traktujemy poufnie, NDA na życzenie.", // [CONFIRM] 48 h
 
   hero: {
     eyebrow: "Wycena",
@@ -77,13 +77,14 @@ export const rfq: RfqContent = {
       "Co mamy wykonać? Wymiary, grubości, gatunek materiału, kolor RAL, ilości. Im konkretniej, tym szybsza wycena.",
     files: {
       label: "Pliki — rysunki i dokumentacja",
-      hint: "DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP · maks. 10 plików, łącznie 15 MB",
+      hint: "DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP · maks. 10 plików, łącznie 4 MB — większe pakiety spakuj do ZIP lub wyślij e-mailem",
       drop: "Przeciągnij pliki tutaj",
       browse: "Wybierz pliki",
       remove: "Usuń",
       errorType:
         "Nieobsługiwany lub pusty plik. Formaty: DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP.",
-      errorSize: "Limit plików: maks. 10 sztuk, łącznie 15 MB.",
+      errorSize:
+        "Limit plików: maks. 10 sztuk, łącznie 4 MB. Większy pakiet spakuj do ZIP lub wyślij e-mailem.",
     },
     consent:
       "Wyrażam zgodę na przetwarzanie moich danych w celu przygotowania wyceny i kontaktu zwrotnego, zgodnie z",
@@ -101,7 +102,7 @@ export const rfq: RfqContent = {
       {
         title: "Odpowiedź w 48 h", // [CONFIRM] quote turnaround
         description:
-          "Wycena albo pytania techniczne w ciągu 48 godzin roboczych. Bez automatów — odpowiada człowiek, który policzył Twoje zlecenie.",
+          "Wycena albo pytania techniczne w ciągu 48 godzin. Bez automatów — odpowiada człowiek, który policzył Twoje zlecenie.",
       },
       {
         title: "Pliki traktujemy poufnie",
@@ -158,17 +159,17 @@ export const rfq: RfqContent = {
       {
         question: "Jakie pliki mogę załączyć?",
         answer:
-          "Najlepiej DXF lub DWG do cięcia laserowego, STEP/STP albo IGES/IGS do obróbki CNC i modeli 3D, PDF do rysunków złożeniowych. Kilka plików możesz spakować w ZIP. Limit to 15 MB łącznie — przy większej dokumentacji napisz, odeślemy link do transferu.",
+          "Najlepiej DXF lub DWG do cięcia laserowego, STEP/STP albo IGES/IGS do obróbki CNC i modeli 3D, PDF do rysunków złożeniowych. Kilka plików możesz spakować w ZIP. Limit to 4 MB łącznie — przy większej dokumentacji napisz, odeślemy link do transferu.",
       },
       {
         question: "Co przyspiesza wycenę?",
         answer:
-          "Komplet konkretów: wymiary i grubości, gatunek materiału (np. S235, 1.4301, EN AW-5754), ilość sztuk i czy seria będzie się powtarzać, kolor RAL przy malowaniu oraz oczekiwany termin. Zapytanie z pełnymi danymi liczymy od razu, bez rundy pytań.",
+          "Komplet konkretów: wymiary i grubości, gatunek materiału (np. S235, 1.4301, EN AW-5754), ilość sztuk i czy seria będzie się powtarzać, kolor RAL przy malowaniu oraz oczekiwany termin. Zapytanie z pełnymi danymi liczymy od razu, bez dopytywania.",
       },
       {
         question: "Czy podpisujecie NDA?",
         answer:
-          "Tak, na życzenie — przed przekazaniem dokumentacji. Niezależnie od NDA każde przesłane pliki traktujemy jako poufne i używamy ich wyłącznie do przygotowania oferty.",
+          "Tak, na życzenie — przed przekazaniem dokumentacji. Niezależnie od NDA wszystkie przesłane pliki traktujemy jako poufne i używamy ich wyłącznie do przygotowania oferty.",
       },
       {
         question: "Czy macie minimalną wielkość zamówienia?",
@@ -195,7 +196,7 @@ export const rfq: RfqContent = {
     lead: "Dziękujemy. Twoje zapytanie i pliki trafiły prosto do zespołu technicznego w Częstochowie.",
     steps: [
       "Potwierdzenie wysłaliśmy na Twój adres e-mail.",
-      "Inżynier przeanalizuje dokumentację i w ciągu 48 godzin roboczych odpowie wyceną albo pytaniami.", // [CONFIRM] 48 h
+      "Inżynier przeanalizuje dokumentację i w ciągu 48 godzin odpowie wyceną albo pytaniami.", // [CONFIRM] 48 h
       "Pliki traktujemy poufnie — służą wyłącznie do przygotowania oferty.",
     ],
     backHome: "Wróć na stronę główną",

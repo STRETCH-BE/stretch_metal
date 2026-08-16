@@ -252,7 +252,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
   cnc: {
     key: "cnc",
     name: "Obróbka CNC",
-    metaTitle: "Obróbka CNC: frezowanie i toczenie — Częstochowa",
+    metaTitle: "Frezowanie i toczenie CNC — Częstochowa",
     metaDescription:
       "Frezowanie i toczenie CNC: stal, nierdzewna, aluminium. Tolerancje do ±0,02 mm, obróbka po spawaniu, prototypy i serie. Pliki STEP/IGES. Częstochowa.", // [CONFIRM] tolerancje
     hero: {
@@ -301,7 +301,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       {
         question: "Jakie tolerancje wykonujecie?",
         answer:
-          "Standardowo ISO 2768-m; na wskazanych wymiarach schodzimy do ±0,02 mm. Tolerancje krytyczne zaznacz na rysunku — obrabianie każdej powierzchni „na wszelki wypadek” niepotrzebnie podnosi cenę.", // [CONFIRM] tolerancje
+          "Standardowo ISO 2768-m; na wskazanych wymiarach schodzimy do ±0,02 mm. Tolerancje krytyczne zaznacz na rysunku — obróbka każdej powierzchni „na wszelki wypadek” niepotrzebnie podnosi cenę.", // [CONFIRM] tolerancje
       },
       {
         question: "Czy obrabiacie konstrukcje po spawaniu?",
@@ -416,7 +416,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
   design: {
     key: "design",
     name: "Projektowanie i dokumentacja",
-    metaTitle: "Projektowanie i dokumentacja 2D/3D — Częstochowa",
+    metaTitle: "Projektowanie 2D/3D — Częstochowa",
     metaDescription:
       "Konstruktor po stronie warsztatu: model 3D, rysunki wykonawcze i pliki DXF pod laser — ze szkicu, zdjęcia lub pomiaru z natury. Częstochowa, cała UE.",
     hero: {
@@ -510,6 +510,10 @@ export const services: Record<ServiceKey, ServiceContent> = {
         { label: "Typy konstrukcji", value: "antresole, platformy, ramy, podkonstrukcje, balustrady, schody" },
         { label: "Materiał", value: "profile i blachy S235JR / S355J2" }, // [CONFIRM] gatunki
         { label: "Maks. masa zespołu spawanego", value: "2 000 kg" }, // [CONFIRM]
+        {
+          label: "Maks. gabaryt zespołu spawanego",
+          value: "6 000 × 2 000 × 2 000 mm; większe konstrukcje w segmentach skręcanych", // [CONFIRM]
+        },
         { label: "Podział na segmenty", value: "pod transport i montaż — łączenia śrubowe" },
         { label: "Wykończenie", value: "malowanie proszkowe na miejscu, cynkowanie u partnera" }, // [CONFIRM] cynkowanie
         { label: "Dokumentacja", value: "model 3D, rysunki warsztatowe i montażowe" },

@@ -18,8 +18,10 @@
  *
  * Files: drag-and-drop zone + browse button. Client-side validation
  * mirrors the server whitelist (.dxf .dwg .step .stp .iges .igs .pdf
- * .zip, 15 MB total, max 10 files) so users get instant, localized
- * feedback; rejections are announced in an aria-live region.
+ * .zip, 4 MB total, max 10 files) so users get instant, localized
+ * feedback; rejections are announced in an aria-live region. A platform
+ * 413 (Vercel's ~4.5 MB body limit, hit before our handler runs) is
+ * mapped to the localized size error rather than the generic one.
  *
  * Analytics (see /lib/analytics.ts):
  *   rfq_form_start  first interaction with the form, fired once
@@ -47,7 +49,7 @@ const ACCEPT_EXTENSIONS = [
   ".zip",
 ] as const;
 const ACCEPT_ATTR = ACCEPT_EXTENSIONS.join(",");
-const MAX_TOTAL_BYTES = 15 * 1024 * 1024;
+const MAX_TOTAL_BYTES = 4 * 1024 * 1024;
 const MAX_FILES = 10;
 
 type Status = "idle" | "submitting" | "error";
@@ -205,6 +207,13 @@ export function RfqForm({
       const res = await fetch("/api/rfq", { method: "POST", body: data });
 
       if (!res.ok) {
+        // Platform 413 (body too large) is rejected before our handler
+        // runs, so there's no localized JSON — map it to the size error.
+        if (res.status === 413) {
+          setStatus("error");
+          setSubmitError(form.files.errorSize);
+          return;
+        }
         // The API returns localized error strings — surface them directly
         let apiError = "";
         try {
@@ -568,6 +577,9 @@ export function RfqForm({
               clearFieldError("consent");
             }}
             aria-invalid={fieldErrors.consent ? true : undefined}
+            aria-describedby={
+              fieldErrors.consent ? "rfq-consent-error" : undefined
+            }
             className="mt-0.5 size-4 shrink-0 accent-red"
           />
           <span>
@@ -582,7 +594,7 @@ export function RfqForm({
           </span>
         </label>
         {fieldErrors.consent && (
-          <p role="alert" className="field-error">
+          <p id="rfq-consent-error" role="alert" className="field-error">
             {fieldErrors.consent}
           </p>
         )}

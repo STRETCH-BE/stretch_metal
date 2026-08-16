@@ -42,7 +42,7 @@ const FRAME = {
   group: {
     eyebrow: "Stretchgroup",
     title: "Marki grupy",
-    lead: "StretchMetal jest jednostką produkcji metalowej Stretchgroup. Siostrzane marki grupy wykonują sufity napinane w Belgii i w Polsce — to ich realizacje odbierają nasze elementy.",
+    lead: "StretchMetal jest jednostką produkcji metalowej Stretchgroup. Siostrzane marki grupy wykonują sufity napinane w Belgii i w Polsce — to ich ekipy montażowe odbierają nasze elementy.",
     links: [
       {
         name: siteConfig.group.belgium.name,

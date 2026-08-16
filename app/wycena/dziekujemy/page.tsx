@@ -43,6 +43,8 @@ const FRAME = {
 
 export const metadata: Metadata = {
   title: rfq.thanks.metaTitle,
+  description:
+    "Dziękujemy za przesłanie zapytania. Odpowiemy w ciągu 48 godzin.", // [CONFIRM] 48 h
   robots: { index: false, follow: false },
 };
 

@@ -41,6 +41,7 @@ export const footer: FooterContent = {
   services: {
     title: "Services",
     links: [
+      { label: "All services", href: routes.services.en },
       { label: "Welding", href: servicePath("welding", "en") },
       { label: "Laser cutting", href: servicePath("laser", "en") },
       { label: "CNC machining", href: servicePath("cnc", "en") },
@@ -86,8 +87,7 @@ export const footer: FooterContent = {
       },
     ],
   },
-  legalLine:
-    "StretchMetal is a brand of Alto Design Sp. z o.o., Częstochowa, Poland — part of the Belgian Stretchgroup.", // [CONFIRM] legal entity + registration line
+  legalLine: `© ${new Date().getFullYear()} ${siteConfig.legalName} — part of the Belgian Stretchgroup.`, // [CONFIRM] legal entity; NIP/VAT ID to be added once confirmed
   legalLinks: [
     { label: "Privacy policy", href: routes.privacy.en },
     { label: "Cookie policy", href: routes.cookies.en },

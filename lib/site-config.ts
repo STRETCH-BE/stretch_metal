@@ -47,7 +47,10 @@ export const siteConfig = {
     hours: "Mo-Fr 08:00-16:00",
   },
 
-  /** Sister brands inside the Stretchgroup — linked in Heritage + footer. */
+  /** Sister brands inside the Stretchgroup — linked in Heritage + footer.
+   *  [CONFIRM] Belgian domain: brief + the live Stretch Sufit site use
+   *  stretchplafond.be, but the owner's email domain is stretchplafonds.be
+   *  (with an s) — confirm which is canonical before launch. */
   group: {
     belgium: { name: "STRETCH", url: "https://stretchplafond.be" },
     poland: { name: "Stretch Sufit", url: "https://altodesign.pl" },

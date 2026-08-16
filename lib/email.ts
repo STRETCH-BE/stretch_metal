@@ -12,7 +12,7 @@
  * `attachments` (Graph #microsoft.graph.fileAttachment entries) so the
  * RFQ route can forward the customer's technical drawings inline in the
  * lead email. Attachments ride in the sendMail JSON body — fine for the
- * 15 MB total the RFQ route enforces (Graph's request cap sits well
+ * 4 MB total the RFQ route enforces (Graph's request cap sits well
  * above that after base64 inflation).
  *
  * Required env vars:

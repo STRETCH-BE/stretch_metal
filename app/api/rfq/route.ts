@@ -15,7 +15,10 @@
  * File policy (rfq only — contact submissions carry no files):
  *   - extensions whitelist: .dxf .dwg .step .stp .iges .igs .pdf .zip
  *   - empty files and unknown extensions rejected (400, localized)
- *   - 15 MB cap per file AND total, max 10 files
+ *   - 4 MB cap per file AND total, max 10 files — Vercel serverless
+ *     rejects request bodies over ~4.5 MB with a platform 413 that never
+ *     reaches this handler, and Microsoft Graph simple attachments cap
+ *     near the same size, so 4 MB is the safe user-facing ceiling
  *   - filenames sanitized before they reach the email (header/HTML safety)
  *
  * Zero-env deploy contract: without the MS_GRAPH_* vars the route logs a
@@ -82,8 +85,8 @@ const ALLOWED_EXTENSIONS = [
   ".zip",
 ] as const;
 
-const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // 15 MB — Graph JSON body stays safe after base64
-const MAX_FILE_BYTES = 15 * 1024 * 1024; // single file may use the whole budget
+const MAX_TOTAL_BYTES = 4 * 1024 * 1024; // 4 MB — Vercel body limit (~4.5 MB) + Graph attachment cap
+const MAX_FILE_BYTES = 4 * 1024 * 1024; // single file may use the whole budget
 const MAX_FILES = 10;
 
 /** MIME by extension — browsers send unreliable types for CAD files. */
@@ -173,7 +176,8 @@ const ERRORS: Record<
     consent: "Wymagana zgoda na przetwarzanie danych.",
     fileType:
       "Niedozwolony format pliku. Akceptujemy: DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP.",
-    fileSize: "Pliki przekraczają limit 15 MB. Wyślij mniejsze pliki lub ZIP.",
+    fileSize:
+      "Pliki przekraczają limit 4 MB. Większy pakiet spakuj do ZIP lub wyślij e-mailem.",
     fileEmpty: "Jeden z plików jest pusty. Usuń go i spróbuj ponownie.",
     tooManyFiles: "Maksymalnie 10 plików w jednym zgłoszeniu.",
     sendFailed: `Nie udało się wysłać zgłoszenia. Napisz: ${siteConfig.contact.email} lub zadzwoń: ${siteConfig.contact.phoneDisplay}.`,
@@ -186,7 +190,8 @@ const ERRORS: Record<
     consent: "Data-processing consent is required.",
     fileType:
       "File type not allowed. Accepted: DXF, DWG, STEP, STP, IGES, IGS, PDF, ZIP.",
-    fileSize: "Files exceed the 15 MB limit. Send smaller files or a ZIP.",
+    fileSize:
+      "Files exceed the 4 MB limit. ZIP a larger package or send it by email.",
     fileEmpty: "One of the files is empty. Remove it and try again.",
     tooManyFiles: "Maximum 10 files per submission.",
     sendFailed: `Sending failed. Email us: ${siteConfig.contact.email} or call: ${siteConfig.contact.phoneDisplay}.`,
@@ -682,7 +687,7 @@ function buildLeadEmail(d: LeadEmailData): string {
           <td style="padding:0 32px 32px;">
             <div style="background:${BRAND_BLACK}; padding:16px 22px;">
               <div style="font-family:${EMAIL_FONT}; font-size:12px; font-weight:700; color:#ffffff; text-transform:uppercase; letter-spacing:0.1em;">
-                Obiecana odpowiedź: <span style="color:${BRAND_RED};">48 godzin roboczych</span>
+                Obiecana odpowiedź: <span style="color:${BRAND_RED};">48 godzin</span>
               </div>
             </div>
           </td>
@@ -723,7 +728,7 @@ function buildAutoReplyEmail(d: AutoReplyData): string {
           body: [
             "Thank you for your enquiry. It has landed directly with our engineering team in Częstochowa — no ticket queue, no call center.",
             // [CONFIRM] 48 h response time
-            "You will receive a quote or technical questions from an engineer within <strong>48 working hours</strong>. If anything in your drawings needs clarifying, we will call or write back first.",
+            "You will receive a quote or technical questions from an engineer within <strong>48 hours</strong>. If anything in your drawings needs clarifying, we will call or write back first.",
             d.hasFiles
               ? "Your files are treated as confidential and are used only to prepare the quote. An NDA is available on request."
               : "If you have technical drawings (DXF, DWG, STEP, PDF), reply to this email and attach them — it speeds up the quote.",
@@ -737,7 +742,7 @@ function buildAutoReplyEmail(d: AutoReplyData): string {
           body: [
             "Dziękujemy za zapytanie. Trafiło bezpośrednio do naszego zespołu technicznego w Częstochowie — bez kolejki zgłoszeń i bez call center.",
             // [CONFIRM] 48 h response time
-            "W ciągu <strong>48 godzin roboczych</strong> odezwie się inżynier z wyceną albo pytaniami technicznymi. Jeśli coś w dokumentacji będzie wymagało doprecyzowania — najpierw zadzwonimy lub napiszemy.",
+            "W ciągu <strong>48 godzin</strong> odezwie się inżynier z wyceną albo pytaniami technicznymi. Jeśli coś w dokumentacji będzie wymagało doprecyzowania — najpierw zadzwonimy lub napiszemy.",
             d.hasFiles
               ? "Twoje pliki traktujemy jako poufne i wykorzystujemy wyłącznie do przygotowania wyceny. Na życzenie podpisujemy NDA."
               : "Jeśli masz rysunki techniczne (DXF, DWG, STEP, PDF), odpowiedz na tę wiadomość i załącz je — przyspieszy to wycenę.",

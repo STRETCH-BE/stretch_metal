@@ -55,7 +55,7 @@ const COPY = {
     title: "Dane firmy",
     // [CONFIRM] podmiot prawny — marka StretchMetal w strukturze grupy
     legal: `${siteConfig.legalName} — właściciel marki ${siteConfig.name}`,
-    nip: "NIP: 000-000-00-00", // [CONFIRM] NIP
+    // [CONFIRM] NIP — dodać wiersz z numerem po jego potwierdzeniu
   },
   map: {
     caption: "MAPA: Częstochowa — ul. Legionów 59",
@@ -178,8 +178,6 @@ export default function ContactPage() {
                     <BlockTitle>{COPY.company.title}</BlockTitle>
                     <p className="mt-3 text-[14px] leading-relaxed text-text-muted">
                       {COPY.company.legal}
-                      <br />
-                      {COPY.company.nip}
                     </p>
                   </div>
 

@@ -24,7 +24,7 @@ export const machines: Machine[] = [
     specs: [
       { label: "Liczba stanowisk", value: "4" }, // [CONFIRM]
       { label: "Zakres prądu", value: "do 350 A" }, // [CONFIRM]
-      { label: "Materiały", value: "stal czarna, nierdzewna" },
+      { label: "Materiały", value: "stal czarna, nierdzewna" }, // [CONFIRM]
       { label: "Wyposażenie", value: "stoły spawalnicze, przyrządy seryjne" }, // [CONFIRM]
     ],
   },
@@ -79,7 +79,7 @@ export const machines: Machine[] = [
     type: "Lakiernia proszkowa",
     specs: [
       { label: "Maks. wymiar detalu", value: "3 000 × 1 200 × 1 500 mm" }, // [CONFIRM]
-      { label: "Kolory", value: "pełna paleta RAL" },
+      { label: "Kolory", value: "pełna paleta RAL" }, // [CONFIRM]
       { label: "Polimeryzacja", value: "180–200 °C" }, // [CONFIRM]
     ],
   },

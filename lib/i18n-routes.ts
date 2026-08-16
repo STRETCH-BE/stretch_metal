@@ -79,6 +79,36 @@ export function findService(
   return serviceSlugs.find((s) => s[locale] === slug);
 }
 
+/* ─── Language-switcher path mapping ──────────────────────── */
+
+/**
+ * Maps a known pathname to its equivalent in the target locale, so the
+ * language switcher preserves the visitor's page instead of resetting to
+ * the homepage. Exact match on the static route table first, then service
+ * detail pages by slug; unknown paths fall back to the target home.
+ */
+export function alternatePath(
+  pathname: string,
+  target: "pl" | "en"
+): string {
+  // Normalize a trailing slash (except the root itself) before matching
+  const path =
+    pathname.length > 1 && pathname.endsWith("/")
+      ? pathname.slice(0, -1)
+      : pathname;
+
+  for (const paths of Object.values(routes)) {
+    if (paths.pl === path || paths.en === path) return paths[target];
+  }
+
+  for (const entry of serviceSlugs) {
+    const paths = servicePaths(entry);
+    if (paths.pl === path || paths.en === path) return paths[target];
+  }
+
+  return routes.home[target];
+}
+
 /* ─── hreflang builder ────────────────────────────────────── */
 
 /**

@@ -10,15 +10,18 @@
  * TrackedCTA `cta_click`, hours).
  *
  * Legal bar below the grid: legalLine, legal links, and the language
- * switcher — FooterContent carries no switcher field, so the PL/EN link is
- * derived from `locale` + routes (locale codes, not copy).
+ * switcher — FooterContent carries no switcher field, so the PL/EN label
+ * is derived from `locale` (locale codes, not copy). The switcher href is
+ * computed from the current pathname in LanguageSwitcherLink — a tiny
+ * client island (usePathname + alternatePath) that links to the
+ * EQUIVALENT page in the other locale, keeping the footer itself server.
  */
 
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
 import { TrackedCTA } from "@/components/ui/tracked-cta";
-import { routes } from "@/lib/i18n-routes";
+import { LanguageSwitcherLink } from "@/components/sections/language-switcher-link";
 import { siteConfig, type Locale } from "@/lib/site-config";
 import type { FooterContent } from "@/content/types";
 
@@ -50,8 +53,8 @@ const footerLink =
 export function Footer({ content, locale }: Props) {
   const switcher =
     locale === "pl"
-      ? { label: "EN", href: routes.home.en }
-      : { label: "PL", href: routes.home.pl };
+      ? { label: "EN", target: "en" as const }
+      : { label: "PL", target: "pl" as const };
 
   return (
     <footer className="bg-black py-14 text-white md:py-20">
@@ -59,7 +62,7 @@ export function Footer({ content, locale }: Props) {
         <div className="grid-lines grid-lines-dark grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand + group */}
           <div className="bg-black p-7 md:p-8">
-            <Logo tone="on-dark" size={24} />
+            <Logo tone="on-dark" size={24} locale={locale} />
             <ColumnTitle className="mt-7">{content.group.title}</ColumnTitle>
             <p className="text-sm leading-relaxed text-on-dark-muted">
               {content.group.description}
@@ -182,12 +185,11 @@ export function Footer({ content, locale }: Props) {
               </li>
             ))}
             <li>
-              <Link
-                href={switcher.href}
+              <LanguageSwitcherLink
+                target={switcher.target}
+                label={switcher.label}
                 className="inline-block border border-line-dark px-2.5 py-1 font-bold uppercase tracking-[0.14em] text-on-dark-soft transition-colors hover:border-white hover:text-white"
-              >
-                {switcher.label}
-              </Link>
+              />
             </li>
           </ul>
         </div>

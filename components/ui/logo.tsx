@@ -9,20 +9,33 @@
  */
 
 import Link from "next/link";
+import { routes } from "@/lib/i18n-routes";
+
+const ARIA_LABELS: Record<"pl" | "en", string> = {
+  pl: "StretchMetal — strona główna",
+  en: "StretchMetal — home",
+};
 
 type Props = {
   tone?: "on-dark" | "on-light";
   /** Pixel font size for the wordmark — default 20 (nav), pass 24 in footer. */
   size?: number;
+  /** Locale of the surrounding page — points the link at that locale's home. */
+  locale?: "pl" | "en";
   className?: string;
 };
 
-export function Logo({ tone = "on-dark", size = 20, className = "" }: Props) {
+export function Logo({
+  tone = "on-dark",
+  size = 20,
+  locale = "pl",
+  className = "",
+}: Props) {
   const metalColor = tone === "on-light" ? "text-black" : "text-white";
   return (
     <Link
-      href="/"
-      aria-label="StretchMetal — strona główna"
+      href={routes.home[locale]}
+      aria-label={ARIA_LABELS[locale]}
       className={`inline-flex items-baseline font-black uppercase leading-none tracking-[-0.03em] ${className}`.trim()}
       style={{
         fontSize: size,

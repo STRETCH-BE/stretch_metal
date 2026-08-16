@@ -137,6 +137,11 @@ export function buildService(opts: {
 }
 
 /* ─── BREADCRUMB LIST ──────────────────────────────────── */
+/**
+ * Home built as `${siteConfig.url}${routes.home.pl}` yields a trailing
+ * slash — normalized to the bare origin so the breadcrumb home item is
+ * identical across every page.
+ */
 export function buildBreadcrumbs(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
@@ -145,7 +150,7 @@ export function buildBreadcrumbs(items: { name: string; url: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: item.url,
+      item: item.url === `${siteConfig.url}/` ? siteConfig.url : item.url,
     })),
   };
 }

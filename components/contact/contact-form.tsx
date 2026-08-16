@@ -63,7 +63,7 @@ const COPY: Record<Locale, Copy> = {
       "Nie udało się wysłać wiadomości. Spróbuj ponownie albo napisz bezpośrednio na nasz adres e-mail.",
     successTitle: "Wiadomość wysłana.",
     successBody:
-      "Dziękujemy. Odpowiemy w ciągu jednego dnia roboczego — z tej samej hali, z której wyjeżdżają elementy.",
+      "Dziękujemy. Odpowiemy w ciągu 48 godzin — z tej samej hali, z której wyjeżdżają elementy.", // [CONFIRM] 48 h — site-wide SLA
   },
   en: {
     name: "Full name *",
@@ -82,7 +82,7 @@ const COPY: Record<Locale, Copy> = {
       "Sending failed. Try again, or write to our email address directly.",
     successTitle: "Message sent.",
     successBody:
-      "Thank you. We reply within one working day — from the same hall your parts would ship from.",
+      "Thank you. We'll reply within 48 hours — from the same hall your parts would ship from.", // [CONFIRM] 48 h — site-wide SLA
   },
 };
 
@@ -297,6 +297,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
               clearFieldError("consent");
             }}
             aria-invalid={fieldErrors.consent ? true : undefined}
+            aria-describedby={
+              fieldErrors.consent ? "contact-consent-error" : undefined
+            }
             className="mt-0.5 size-4 shrink-0 accent-red"
           />
           <span>
@@ -311,7 +314,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
           </span>
         </label>
         {fieldErrors.consent && (
-          <p role="alert" className="field-error">
+          <p id="contact-consent-error" role="alert" className="field-error">
             {fieldErrors.consent}
           </p>
         )}
