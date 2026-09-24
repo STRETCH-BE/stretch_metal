@@ -35,9 +35,9 @@ export const siteConfig = {
   defaultLocale: "pl" as const,
 
   contact: {
-    // [CONFIRM] phone — currently the group's Polish number
-    phone: "+48730700333",
-    phoneDisplay: "+48 730 700 333",
+    // Belgian contact number
+    phone: "+32485483035",
+    phoneDisplay: "+32 485 48 30 35",
     // [CONFIRM] email
     email: "info@stretchmetal.pl",
     address: {
